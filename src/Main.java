@@ -1,15 +1,33 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Set;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        ArrayList<String> harfler = new ArrayList<>();
+        Random rand = new Random();
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 4; i++) {
+            char randomChar = (char) ('a' + rand.nextInt(26));
+            harfler.add(String.valueOf(randomChar));
         }
-    }
+       //  --> rastgele harf atadığında found değişimini kontrol edilemeyebilir o yüzden aşağıdaki kodu açıklamasını kaldırınız
+
+       // System.out.println("Güncellenmiş liste: " + harfler);
+
+       //Kullanıcıdan harf alma
+        for (int i = 0; i < 4; i++) {
+            System.out.print((i + 1) + ". harfi girin: ");
+            String input = scanner.nextLine().toLowerCase();
+
+            if (harfler.contains(input)) {
+                int index = harfler.indexOf(input);
+                harfler.set(index, "found");
+            } else {
+                harfler.add(input);
+            }
+        }
+        System.out.println("Güncellenmiş liste: " + harfler);
+        }
 }
